@@ -1,0 +1,126 @@
+[gd_scene load_steps=15 format=3 uid="uid://dhknay6ry2i2r"]
+
+[ext_resource type="Script" path="res://scripts/node_scripts/hud_manager.gd" id="1_alb08"]
+[ext_resource type="FontFile" uid="uid://ueffophbu8vu" path="res://assets/fonts/Kenney Mini Square Mono.ttf" id="2_psj4r"]
+[ext_resource type="PackedScene" uid="uid://bxn67t3sshv04" path="res://scenes/gui/panel_window.tscn" id="3_1io4x"]
+[ext_resource type="AudioStream" uid="uid://bvnryi1gawlsn" path="res://assets/sounds/button_sound.mp3" id="3_4kwfn"]
+[ext_resource type="Texture2D" uid="uid://d1kyl3emg8o7t" path="res://assets/textures/gui.png" id="3_dg167"]
+[ext_resource type="PackedScene" uid="uid://dnf7jh13be63e" path="res://scenes/gui/sfx_volume_setting.tscn" id="4_6660c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fwh7"]
+size = Vector2(160, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrwl"]
+size = Vector2(160, 180)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qumim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pi74j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_114sf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1ku7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vxrm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqw1m"]
+atlas = ExtResource("3_dg167")
+region = Rect2(0, 0, 16, 16)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_alb08")
+_fixed_timer_color = Color(0.94, 0.94, 0.5546, 1)
+_title_scene_path = "res://scenes/levels/title.tscn"
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2(80, 90)
+shape = SubResource("RectangleShape2D_7fwh7")
+shape_visible = false
+action = "move_left"
+visibility_mode = 1
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2(240, 90)
+shape = SubResource("RectangleShape2D_3nrwl")
+shape_visible = false
+action = "move_right"
+visibility_mode = 1
+
+[node name="Frame" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="TimerLabel" type="Label" parent="Frame"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 38.0
+offset_bottom = 18.0
+theme_override_colors/font_outline_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_psj4r")
+theme_override_font_sizes/font_size = 8
+text = "00:00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TitleButton" type="Button" parent="Frame"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 24.0
+text = "Title"
+
+[node name="PauseButton" type="Button" parent="Frame"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = 24.0
+pivot_offset = Vector2(9, 9)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qumim")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pi74j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_114sf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t1ku7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vxrm")
+icon = SubResource("AtlasTexture_lqw1m")
+flat = true
+expand_icon = true
+
+[node name="PausePanel" parent="Frame" instance=ExtResource("3_1io4x")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -70.0
+offset_right = 140.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SFXVolumeSetting" parent="Frame/PausePanel" instance=ExtResource("4_6660c")]
+layout_mode = 1
+anchors_preset = 15
+offset_left = 84.0
+offset_top = 56.0
+offset_right = -196.0
+offset_bottom = -84.0
+
+[node name="PanelTitleButton" type="Button" parent="Frame/PausePanel"]
+self_modulate = Color(0.988235, 0.498039, 0.498039, 1)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 180.0
+offset_bottom = 116.0
+text = "Title"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4kwfn")

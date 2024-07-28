@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhb5sax7flalw"]
+
+[ext_resource type="Script" path="res://scripts/particle_auto_destroy.gd" id="1_uk642"]
+
+[sub_resource type="Curve" id="Curve_px34o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 12
+
+[sub_resource type="CurveTexture" id="CurveTexture_ijo3m"]
+curve = SubResource("Curve_px34o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7qjpu"]
+particle_flag_disable_z = true
+spread = 60.0
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1.0
+damping_max = 1.0
+alpha_curve = SubResource("CurveTexture_ijo3m")
+
+[node name="HopParticle" type="GPUParticles2D"]
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_7qjpu")
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_uk642")

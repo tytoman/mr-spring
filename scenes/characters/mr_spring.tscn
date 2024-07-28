@@ -1,0 +1,131 @@
+[gd_scene load_steps=20 format=3 uid="uid://bq42lx2gedv6g"]
+
+[ext_resource type="Texture2D" uid="uid://dnltjlmc854tt" path="res://assets/textures/character.png" id="1_1hybl"]
+[ext_resource type="Script" path="res://scripts/node_scripts/mr_spring.gd" id="1_soy0n"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_3aaha"]
+[ext_resource type="Script" path="res://scripts/states/move.gd" id="4_asmsr"]
+[ext_resource type="Script" path="res://scripts/states/dead.gd" id="5_l8mp4"]
+[ext_resource type="PackedScene" uid="uid://bhb5sax7flalw" path="res://scenes/objects/hop_particle.tscn" id="5_t1pb5"]
+[ext_resource type="Script" path="res://scripts/hop_effect_handler.gd" id="6_2c32l"]
+[ext_resource type="AudioStream" uid="uid://c66hbqfo0p00r" path="res://assets/sounds/hop_sound.mp3" id="8_pr76n"]
+[ext_resource type="AudioStream" uid="uid://bot270cnu3vds" path="res://assets/sounds/dead_sound.mp3" id="9_1kx0g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pcw"]
+atlas = ExtResource("1_1hybl")
+region = Rect2(0, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8dqo"]
+atlas = ExtResource("1_1hybl")
+region = Rect2(8, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnq35"]
+atlas = ExtResource("1_1hybl")
+region = Rect2(16, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6i0p"]
+atlas = ExtResource("1_1hybl")
+region = Rect2(24, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm1ew"]
+atlas = ExtResource("1_1hybl")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oemlg"]
+atlas = ExtResource("1_1hybl")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dxty"]
+atlas = ExtResource("1_1hybl")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2py8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6pcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8dqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnq35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6i0p")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dead",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm1ew")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oemlg")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dxty")
+}],
+"loop": true,
+"name": &"squat",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i85wh"]
+radius = 1.8
+height = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpq3x"]
+radius = 2.0
+
+[node name="MrSpring" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_soy0n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2py8f")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("CapsuleShape2D_i85wh")
+
+[node name="FootCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_dpq3x")
+
+[node name="Foot" type="Marker2D" parent="."]
+position = Vector2(0, 7)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_3aaha")
+initial_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("4_asmsr")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("5_l8mp4")
+
+[node name="EffectHandler" type="Node" parent="."]
+script = ExtResource("6_2c32l")
+_hop_particle = ExtResource("5_t1pb5")
+_hop_sound = ExtResource("8_pr76n")
+_dead_sound = ExtResource("9_1kx0g")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

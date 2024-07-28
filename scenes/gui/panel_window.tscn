@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxn67t3sshv04"]
+
+[ext_resource type="Script" path="res://scripts/node_scripts/panel_window.gd" id="1_fkdi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a20ag"]
+bg_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3j12"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktlqh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hl8w4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4owu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wg23h"]
+
+[node name="PanelWindow" type="Panel"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 160.0
+pivot_offset = Vector2(140, 70)
+theme_override_styles/panel = SubResource("StyleBoxFlat_a20ag")
+script = ExtResource("1_fkdi7")
+
+[node name="CloseButton" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 300.0
+offset_bottom = 160.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c3j12")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ktlqh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hl8w4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_c4owu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wg23h")
