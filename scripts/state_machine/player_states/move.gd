@@ -1,5 +1,6 @@
 class_name Move extends StateBase
 
+## Player's state. Handling inputs, movement and animations.
 
 signal hopped(collision: KinematicCollision2D)
 signal damaged()
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	_current_rotation_deg += diff_rot * clampf(delta * _rotation_acceleration, 0.0, 1.0)	
 	_mr_spring.rotation_degrees += _current_rotation_deg * delta
 	
-	# Jumping.
+	# Hopping.
 	if _mr_spring.is_on_wall():
 		var n := _mr_spring.get_wall_normal()
 		var up := -_mr_spring.transform.y
@@ -50,10 +51,6 @@ func _physics_process(delta: float) -> void:
 		_sprite.flip_h = true
 	elif _mr_spring.get_real_velocity().x > 0.0:
 		_sprite.flip_h = false
-
-
-func _on_registered() -> void:
-	pass
 
 
 func _on_state_enter() -> void:

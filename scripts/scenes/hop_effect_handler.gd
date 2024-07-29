@@ -1,5 +1,6 @@
 class_name EffectHandler extends Node
 
+# Manage player's VFX and SFX.
 
 @export var _hop_particle: PackedScene
 @export var _hop_sound: AudioStream

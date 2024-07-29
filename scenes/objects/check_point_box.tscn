@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://rn05ie6yugk5"]
 
 [ext_resource type="Texture2D" uid="uid://bpscbnbge5q5n" path="res://assets/textures/check_box.png" id="1_cdp4w"]
-[ext_resource type="Script" path="res://scripts/node_scripts/check_point_box.gd" id="2_2x2th"]
+[ext_resource type="Script" path="res://scripts/scenes/check_point_box.gd" id="2_2x2th"]
 [ext_resource type="AudioStream" uid="uid://d1jc5tadem8vl" path="res://assets/sounds/checkin_sound.mp3" id="3_46ikk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpuk8"]

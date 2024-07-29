@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cd0hpwbv1og0i"]
 
 [ext_resource type="Texture2D" uid="uid://otjggw0llw61" path="res://assets/textures/mr_spring_logo.png" id="1_0mknw"]
-[ext_resource type="Script" path="res://scripts/title_manager.gd" id="1_afqb7"]
+[ext_resource type="Script" path="res://scripts/scenes/title_manager.gd" id="1_afqb7"]
 [ext_resource type="AudioStream" uid="uid://bvnryi1gawlsn" path="res://assets/sounds/button_sound.mp3" id="2_54u5n"]
 [ext_resource type="PackedScene" uid="uid://bxn67t3sshv04" path="res://scenes/gui/panel_window.tscn" id="4_udj42"]
 [ext_resource type="PackedScene" uid="uid://dnf7jh13be63e" path="res://scenes/gui/sfx_volume_setting.tscn" id="5_d7ng4"]

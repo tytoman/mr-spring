@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_2nad6"]
 [ext_resource type="TileSet" uid="uid://cnswh8fuo6imt" path="res://resources/tile_sets/ground.tres" id="1_j4esd"]
 [ext_resource type="PackedScene" uid="uid://bq42lx2gedv6g" path="res://scenes/characters/mr_spring.tscn" id="2_gjwqv"]
-[ext_resource type="Script" path="res://scripts/states/in_game_state.gd" id="2_l1u4h"]
+[ext_resource type="Script" path="res://scripts/state_machine/game_states/in_game_state.gd" id="2_l1u4h"]
 [ext_resource type="PackedScene" uid="uid://rn05ie6yugk5" path="res://scenes/objects/check_point_box.tscn" id="3_qxxmi"]
-[ext_resource type="Script" path="res://scripts/states/finished_state.gd" id="4_8jqp6"]
-[ext_resource type="Script" path="res://scripts/check_point.gd" id="4_24rut"]
+[ext_resource type="Script" path="res://scripts/state_machine/game_states/finished_state.gd" id="4_8jqp6"]
+[ext_resource type="Script" path="res://scripts/nodes/check_point.gd" id="4_24rut"]
 [ext_resource type="AudioStream" uid="uid://d2ut7k27etsqa" path="res://assets/sounds/reached_goal_sound.mp3" id="5_eqboa"]
 [ext_resource type="PackedScene" uid="uid://dhknay6ry2i2r" path="res://scenes/gui/hud.tscn" id="8_on8sg"]
 

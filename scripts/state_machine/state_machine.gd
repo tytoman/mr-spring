@@ -1,5 +1,6 @@
 class_name StateMachine extends Node
 
+## Holds state as a child node.
 
 signal enter_state(state: StateBase)
 signal exit_state(state: StateBase)

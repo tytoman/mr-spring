@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnf7jh13be63e"]
 
-[ext_resource type="Script" path="res://scripts/node_scripts/sfx_volume_setting.gd" id="1_qttky"]
+[ext_resource type="Script" path="res://scripts/scenes/sfx_volume_setting.gd" id="1_qttky"]
 
 [node name="SFXVolumeSetting" type="Control"]
 layout_mode = 3

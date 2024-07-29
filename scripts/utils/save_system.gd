@@ -1,5 +1,6 @@
 class_name SaveSystem extends RefCounted
 
+## Easily save and load data.
 
 const SAVE_FILE_PATH: String = "user://save_file.save"
 

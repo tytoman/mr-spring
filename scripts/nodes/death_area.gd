@@ -1,5 +1,6 @@
 class_name DeathArea extends Area2D
 
+## Area where players die when touched.
 
 func _ready() -> void:
 	body_entered.connect(_on_body_enter)

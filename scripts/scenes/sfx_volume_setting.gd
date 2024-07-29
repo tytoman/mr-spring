@@ -1,5 +1,6 @@
 extends Control
 
+## Slider to adjust the sound volume.
 
 @onready var _slider: HSlider = $Slider
 @onready var _master_bus := AudioServer.get_bus_index("Master")

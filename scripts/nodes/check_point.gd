@@ -1,8 +1,10 @@
 class_name CheckPoint extends Area2D
 
+## Update the player's respawn point when activated. Requires CheckPointBox and Marker2D as child nodes.
 
 signal activated(check_point: CheckPoint)
 
+## Enable whether this checkpoint should be activated at the start of the game. (for debugging)
 @export var _activated_when_start: bool = false
 
 var _is_activated: bool = false

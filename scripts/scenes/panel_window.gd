@@ -1,10 +1,12 @@
 class_name PanelWindow extends Panel
 
+## Panels that can be shown or hidden with animation.
 
 signal showed()
 signal hid()
 
 @export var _anim_duration: float = 0.3
+## Animate from the coordinate: (_hide_direction.x * window_width, _hide_direction.y * window_height).
 @export var _hide_direction: Vector2 = Vector2.DOWN
 
 var _initial_position: Vector2
@@ -30,8 +32,8 @@ func show_panel() -> void:
 
 
 func hide_panel() -> void:
-	var tween := get_tree().create_tween()
 	hid.emit()
+	var tween := get_tree().create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.tween_property(self, "position", _hide_position, _anim_duration)

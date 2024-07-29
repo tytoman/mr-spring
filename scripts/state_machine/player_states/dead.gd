@@ -1,5 +1,6 @@
 class_name Dead extends StateBase
 
+## Player's state. Play the dead animation and discard player.
 
 signal dead()
 

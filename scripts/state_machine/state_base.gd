@@ -1,5 +1,6 @@
 class_name StateBase extends Node
 
+## Base class of the states.
 
 signal request_transit_state(next_state: StateBase)
 

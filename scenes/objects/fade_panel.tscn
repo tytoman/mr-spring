@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxwf4kfvaynux"]
 
-[ext_resource type="Script" path="res://scripts/node_scripts/fade_panel.gd" id="1_6a1vc"]
+[ext_resource type="Script" path="res://scripts/scenes/fade_panel.gd" id="1_6a1vc"]
 
 [node name="FadePanel" type="CanvasLayer"]
 layer = 128

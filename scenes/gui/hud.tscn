@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dhknay6ry2i2r"]
 
-[ext_resource type="Script" path="res://scripts/node_scripts/hud_manager.gd" id="1_alb08"]
+[ext_resource type="Script" path="res://scripts/scenes/hud_manager.gd" id="1_alb08"]
 [ext_resource type="FontFile" uid="uid://ueffophbu8vu" path="res://assets/fonts/Kenney Mini Square Mono.ttf" id="2_psj4r"]
 [ext_resource type="PackedScene" uid="uid://bxn67t3sshv04" path="res://scenes/gui/panel_window.tscn" id="3_1io4x"]
 [ext_resource type="AudioStream" uid="uid://bvnryi1gawlsn" path="res://assets/sounds/button_sound.mp3" id="3_4kwfn"]

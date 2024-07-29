@@ -1,13 +1,19 @@
 class_name InGameState extends StateBase
 
+## Game's state. Respawn player and register checkpoints.
 
 signal in_game_process()
 signal reached_goal(msec: int)
 
+## Player scene to be generated.
 @export var _player_scene: PackedScene
+## Marker2D to follow the player; used for camera control.
 @export var _player_tracker: Marker2D
+## Player's initial spawn position.
 @export var _player_start: Marker2D
+## When this checkpoint is activated, the game is cleared.
 @export var _goal_check_point: CheckPoint
+## State to be transited when the game is cleared.
 @export var _next_state: StateBase
 
 var current_time_msec: int
@@ -82,6 +88,8 @@ func _on_reached_goal(_check_point: CheckPoint) -> void:
 
 
 func _update_best_time() -> void:
+	# If the clearing time is shorter than the best time,
+	# or no data is avaiable, update the best time.
 	var msec: Variant = SaveSystem.load_with_key("best_msec")
 	if not msec is float or current_time_msec < msec:
 		SaveSystem.save_with_key("best_msec", current_time_msec)

@@ -1,7 +1,10 @@
 class_name HUDManager extends CanvasLayer
 
+## Manage UI and pause screens during game play.
 
+## The color of the timer when the clear time is fixed.
 @export var _fixed_timer_color: Color
+## File path of the title scene.
 @export_file var _title_scene_path: String
 
 @onready var _timer_label: Label = $Frame/TimerLabel

@@ -1,5 +1,6 @@
 class_name FinishedState extends StateBase
 
+## Game's state. Performs slow motion and plays sound effects when game is cleared.
 
 signal start_slow()
 signal end_slow()

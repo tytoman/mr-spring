@@ -1,16 +1,19 @@
 class_name TitleManager extends CanvasLayer
 
+## Manage the UI of the title screen.
 
+## File path of the game scene.
 @export_file("*.tscn") var game_scene_path: String
 
+# Buttons
 @onready var _play_button: Button = $Panel/PlayButton
 @onready var _quit_button: Button = $Panel/QuitButton
 @onready var _credit_button: Button = $Panel/CreditButton
 @onready var _setting_button: Button = $Panel/SettingButton
-
+# Panels
 @onready var _credit_panel: PanelWindow = $Panel/CreditPanel
 @onready var _setting_panel: PanelWindow = $Panel/SettingPanel
-
+# Others
 @onready var _best_time: Label = $Panel/TimePanel/BestTime
 @onready var _audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
