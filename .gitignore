@@ -16,3 +16,6 @@ export_presets.cfg
 .DS_Store
 *~
 *.blend1
+
+*.keystore
+android/build/

@@ -1,12 +1,12 @@
 [gd_scene load_steps=20 format=3 uid="uid://bq42lx2gedv6g"]
 
 [ext_resource type="Texture2D" uid="uid://dnltjlmc854tt" path="res://assets/textures/character.png" id="1_1hybl"]
-[ext_resource type="Script" path="res://scripts/scenes/mr_spring.gd" id="1_soy0n"]
-[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_3aaha"]
-[ext_resource type="Script" path="res://scripts/state_machine/player_states/move.gd" id="4_asmsr"]
-[ext_resource type="Script" path="res://scripts/state_machine/player_states/dead.gd" id="5_l8mp4"]
+[ext_resource type="Script" uid="uid://coh882wglmw7c" path="res://scripts/scenes/mr_spring.gd" id="1_soy0n"]
+[ext_resource type="Script" uid="uid://s53uwvg5l5pj" path="res://scripts/state_machine/state_machine.gd" id="3_3aaha"]
+[ext_resource type="Script" uid="uid://cq6k88yqk80ig" path="res://scripts/state_machine/player_states/move.gd" id="4_asmsr"]
+[ext_resource type="Script" uid="uid://cbyob15v3cm3" path="res://scripts/state_machine/player_states/dead.gd" id="5_l8mp4"]
 [ext_resource type="PackedScene" uid="uid://bhb5sax7flalw" path="res://scenes/objects/hop_particle.tscn" id="5_t1pb5"]
-[ext_resource type="Script" path="res://scripts/scenes/hop_effect_handler.gd" id="6_2c32l"]
+[ext_resource type="Script" uid="uid://gy5ebmd266im" path="res://scripts/scenes/hop_effect_handler.gd" id="6_2c32l"]
 [ext_resource type="AudioStream" uid="uid://c66hbqfo0p00r" path="res://assets/sounds/hop_sound.mp3" id="8_pr76n"]
 [ext_resource type="AudioStream" uid="uid://bot270cnu3vds" path="res://assets/sounds/dead_sound.mp3" id="9_1kx0g"]
 
