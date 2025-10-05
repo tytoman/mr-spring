@@ -18,9 +18,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07p0d"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wuljw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07p0d"]
 
 [node name="Title" type="CanvasLayer"]
 script = ExtResource("1_afqb7")
@@ -43,7 +43,7 @@ layout_mode = 0
 offset_left = 224.0
 offset_top = 8.0
 offset_right = 312.0
-offset_bottom = 76.0
+offset_bottom = 56.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4cxuk")
 
 [node name="Label" type="Label" parent="Panel/TimePanel"]
@@ -59,13 +59,28 @@ horizontal_alignment = 1
 self_modulate = Color(0.94, 0.94, 0.5546, 1)
 layout_mode = 0
 offset_left = 4.0
-offset_top = 32.0
+offset_top = 24.0
 offset_right = 84.0
-offset_bottom = 44.0
+offset_bottom = 36.0
 pivot_offset = Vector2(40, 0)
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="Panel"]
+[node name="NewGameButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -120.0
+offset_right = -8.0
+offset_bottom = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -78,7 +93,7 @@ offset_right = -8.0
 offset_bottom = -68.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Play"
+text = "Continue"
 
 [node name="CreditButton" type="Button" parent="Panel"]
 layout_mode = 1
@@ -126,6 +141,7 @@ grow_vertical = 0
 text = "Quit"
 
 [node name="CreditPanel" parent="Panel" instance=ExtResource("4_udj42")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,8 +171,8 @@ offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_07p0d")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wuljw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_07p0d")
 text = "* Assets
 - Sound Effects by UNIVERSFIELD from Pixabay
 - Font package (free)
@@ -2215,6 +2231,7 @@ License: Zlib
 selection_enabled = true
 
 [node name="SettingPanel" parent="Panel" instance=ExtResource("4_udj42")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

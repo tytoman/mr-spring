@@ -3,6 +3,7 @@ class_name InGameState extends StateBase
 ## Game's state. Respawn player and register checkpoints.
 
 signal in_game_process()
+signal player_spawned()
 signal reached_goal(msec: int)
 
 ## Player scene to be generated.
@@ -17,6 +18,7 @@ signal reached_goal(msec: int)
 @export var _next_state: StateBase
 
 var current_time_msec: int
+var attempts: int
 
 var _mr_string: MrSpring
 var _spawn_position: Vector2
@@ -49,8 +51,10 @@ func _on_registered() -> void:
 
 func _on_state_enter() -> void:
 	_start_time_msec = Time.get_ticks_msec()
+	current_time_msec = SaveSystem.load_with_key("progress_msec", 0)
+	attempts = SaveSystem.load_with_key("progress_attempts", 0)
+	_spawn_position = SaveSystem.string_to_vector2(SaveSystem.load_with_key("progress_checkpoint", _player_start.global_position))
 	_spawn_player.call_deferred()
-	current_time_msec = 0
 
 
 func _on_state_exit() -> void:
@@ -62,6 +66,12 @@ func pause_game(value: bool) -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED if value else Node.PROCESS_MODE_INHERIT
 	_mr_string.process_mode = Node.PROCESS_MODE_DISABLED if value else Node.PROCESS_MODE_INHERIT
 
+	# 進捗を保存
+	if value:
+		SaveSystem.save_with_key("progress_msec", current_time_msec)
+		SaveSystem.save_with_key("progress_attempts", attempts)
+		SaveSystem.save_with_key("progress_checkpoint", _spawn_position)
+
 
 func _register_checkpoints() -> void:
 	var check_points := get_tree().get_nodes_in_group("check_point")
@@ -71,10 +81,12 @@ func _register_checkpoints() -> void:
 
 
 func _spawn_player() -> void:
+	attempts += 1
 	_mr_string = _player_scene.instantiate()
 	_mr_string.global_position = _spawn_position
 	get_tree().current_scene.add_child(_mr_string)
 	_mr_string.dead.connect(_spawn_player)
+	player_spawned.emit()
 
 
 func _on_check_point_activated(check_point: CheckPoint) -> void:

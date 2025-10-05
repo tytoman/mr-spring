@@ -8,6 +8,7 @@ class_name HUDManager extends CanvasLayer
 @export_file var _title_scene_path: String
 
 @onready var _timer_label: Label = $Frame/TimerLabel
+@onready var _attempts_label: Label = $Frame/AttemptsLabel
 @onready var _title_button: Button = $Frame/TitleButton
 @onready var _panel_title_button: Button = $Frame/PausePanel/PanelTitleButton
 @onready var _pause_button: Button = $Frame/PauseButton
@@ -32,6 +33,9 @@ func _ready() -> void:
 	_in_game_state.reached_goal.connect(_on_reached_goal)
 	_finished_state.end_slow.connect(_on_end_slow)
 
+	# Connect player events.
+	_in_game_state.player_spawned.connect(_update_attempts)
+
 
 func _on_show_pause_panel() -> void:
 	ResourceLoader.load_threaded_request(_title_scene_path)
@@ -48,6 +52,10 @@ func _on_hide_pause_panel() -> void:
 
 func _update_timer() -> void:
 	_timer_label.text = Common.msec_to_str(_in_game_state.current_time_msec)
+
+
+func _update_attempts() -> void:
+	_attempts_label.text = "attempts: " + str(_in_game_state.attempts)
 
 
 func _on_title_pressed() -> void:

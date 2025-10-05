@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dhknay6ry2i2r"]
 
-[ext_resource type="Script" path="res://scripts/scenes/hud_manager.gd" id="1_alb08"]
+[ext_resource type="Script" uid="uid://df4jiwj2ckqry" path="res://scripts/scenes/hud_manager.gd" id="1_alb08"]
 [ext_resource type="FontFile" uid="uid://ueffophbu8vu" path="res://assets/fonts/Kenney Mini Square Mono.ttf" id="2_psj4r"]
 [ext_resource type="PackedScene" uid="uid://bxn67t3sshv04" path="res://scenes/gui/panel_window.tscn" id="3_1io4x"]
 [ext_resource type="AudioStream" uid="uid://bvnryi1gawlsn" path="res://assets/sounds/button_sound.mp3" id="3_4kwfn"]
@@ -15,9 +15,9 @@ size = Vector2(160, 180)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qumim"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pi74j"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_114sf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pi74j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1ku7"]
 
@@ -66,6 +66,19 @@ text = "00:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="AttemptsLabel" type="Label" parent="Frame"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 20.0
+offset_right = 74.0
+offset_bottom = 30.0
+theme_override_colors/font_outline_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_psj4r")
+theme_override_font_sizes/font_size = 8
+text = "attempts: 0"
+vertical_alignment = 1
+
 [node name="TitleButton" type="Button" parent="Frame"]
 layout_mode = 0
 offset_left = 232.0
@@ -82,8 +95,8 @@ offset_right = 304.0
 offset_bottom = 24.0
 pivot_offset = Vector2(9, 9)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qumim")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_pi74j")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_114sf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pi74j")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_t1ku7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6vxrm")
 icon = SubResource("AtlasTexture_lqw1m")

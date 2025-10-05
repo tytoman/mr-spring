@@ -37,8 +37,15 @@ static func save_with_key(key: Variant, value: Variant) -> void:
 	save_dict(dict)
 
 
-static func load_with_key(key: Variant) -> Variant:
+static func load_with_key(key: Variant, default_value: Variant = null) -> Variant:
 	var dict := SaveSystem.load_dict()
 	if not dict.has(key):
-		return null
+		return default_value
 	return dict[key]
+
+
+static func string_to_vector2(v_string: String) -> Vector2:
+	var s := v_string.replace("(", "").replace(")", "")
+	var x := float(s.get_slice(",", 0))
+	var y := float(s.get_slice(",", 1))
+	return Vector2(x, y)
