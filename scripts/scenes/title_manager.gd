@@ -43,7 +43,11 @@ func _ready() -> void:
 
 
 func _show_best_time() -> void:
-	var msec: Variant = SaveSystem.load_with_key("best_msec")
+	var msec: Variant = SaveSystem.load_with_key("best_msec", null)
+
+	if msec == null:
+		msec = SaveSystem.load_with_key_obsoleted("best_msec")
+
 	if msec is float:
 		_best_time.text = Common.msec_to_str(msec)
 	else:
@@ -52,9 +56,9 @@ func _show_best_time() -> void:
 
 func _on_play_pressed() -> void:
 	# 保存されたデータを削除
-	SaveSystem.save_with_key("progress_msec", 0)
-	SaveSystem.save_with_key("progress_attempts", 0)
-	SaveSystem.save_with_key("progress_checkpoint", Vector2.ZERO)
+	SaveSystem.delete_with_key("progress_msec")
+	SaveSystem.delete_with_key("progress_attempts")
+	SaveSystem.delete_with_key("progress_checkpoint")
 
 	_load_game()
 

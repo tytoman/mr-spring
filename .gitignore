@@ -19,3 +19,5 @@ export_presets.cfg
 
 *.keystore
 android/build/
+
+env.gd

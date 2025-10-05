@@ -53,7 +53,7 @@ func _on_state_enter() -> void:
 	_start_time_msec = Time.get_ticks_msec()
 	current_time_msec = SaveSystem.load_with_key("progress_msec", 0)
 	attempts = SaveSystem.load_with_key("progress_attempts", 0)
-	_spawn_position = SaveSystem.string_to_vector2(SaveSystem.load_with_key("progress_checkpoint", _player_start.global_position))
+	_spawn_position = SaveSystem.string_to_vector2(SaveSystem.load_with_key("progress_checkpoint", str(_player_start.global_position)))
 	_spawn_player.call_deferred()
 
 
